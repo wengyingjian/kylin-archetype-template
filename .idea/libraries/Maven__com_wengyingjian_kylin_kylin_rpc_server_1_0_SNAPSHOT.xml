@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.wengyingjian.kylin:kylin-rpc-server:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-rpc-server/1.0-SNAPSHOT/kylin-rpc-server-1.0-20160210.193803-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-rpc-server/1.0-SNAPSHOT/kylin-rpc-server-1.0-20160210.193803-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-rpc-server/1.0-SNAPSHOT/kylin-rpc-server-1.0-20160210.193803-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,4 @@
+com/a/b/c/common/model/User.class
+com/a/b/c/common/model/query/UserQuery.class
+com/a/b/c/common/enums/UserType.class
+com/a/b/c/common/service/UserService.class

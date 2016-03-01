@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.wengyingjian.kylin:kylin-common:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-common/1.0-SNAPSHOT/kylin-common-1.0-20160210.193747-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-common/1.0-SNAPSHOT/kylin-common-1.0-20160210.193747-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/wengyingjian/kylin/kylin-common/1.0-SNAPSHOT/kylin-common-1.0-20160210.193747-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,5 @@
+com/a/b/c/dao/UserDao.class
+com/a/b/c/service/impl/UserServiceImpl.class
+com/a/b/c/ServiceConfig.class
+com/a/b/c/dao/mapper/UserMapper.class
+com/a/b/c/ServiceApp.class
