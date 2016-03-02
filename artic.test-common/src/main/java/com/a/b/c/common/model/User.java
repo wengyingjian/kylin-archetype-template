@@ -1,10 +1,14 @@
 package com.a.b.c.common.model;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
 import java.io.Serializable;
 
 /**
  * Created by wengyingjian on 16/2/1.
  */
+@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 public class User implements Serializable {
 
     private Integer id;

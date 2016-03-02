@@ -17,7 +17,7 @@
         FROM t_user
         <where>
             <if test="id != null">
-               id = #{ id }
+                id = #{ id }
             </if>
             <if test="userName != null">
                 AND user_name = #{ userName }
@@ -31,7 +31,7 @@
         </if>
     </select>
 
-    <insert id="insertSelective" parameterType="com.a.b.c.common.model.User">
+    <insert id="insertSelective" parameterType="com.a.b.c.common.model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userName != null">

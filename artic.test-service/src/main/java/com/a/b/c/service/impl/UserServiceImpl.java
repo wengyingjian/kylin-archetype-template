@@ -9,6 +9,9 @@ import com.a.b.c.common.model.User;
 import com.a.b.c.common.model.query.UserQuery;
 import com.a.b.c.common.service.UserService;
 import com.a.b.c.dao.UserDao;
+import com.wengyingjian.kylin.util.JsonUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -19,31 +22,32 @@ import java.util.List;
 @RemoteService(serviceType = ServiceType.HESSIAN, serviceInterface = UserService.class, exportPath = "/userService")
 public class UserServiceImpl implements UserService {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private UserDao userDao;
 
     @Override
     public Result<List<User>> findUsers(UserQuery userQuery) {
-        if(userQuery==null){
+        if (userQuery == null) {
             return ResultUtil.genCommonError("userQuery bean can not be null");
         }
-        return ResultUtil.genSuccessResult(userDao.selectUsers(userQuery));
+        List<User> userList = userDao.selectUsers(userQuery);
+        logger.debug("userList=[{}]", JsonUtil.getJsonFromObject(userList));
+        return ResultUtil.genSuccessResult(userList);
     }
 
     @Override
-    public Result<Boolean> addUser(User user) {
+    public Result<User> addUser(User user) {
         if (user == null) {
             return ResultUtil.genCommonError("target user can not be null");
         }
         int affectedRows = userDao.insertSelective(user);
-        boolean result = affectedRows == 0 ? false : true;
-        return ResultUtil.genSuccessResult(result);
+        return ResultUtil.genSuccessResult(user);
     }
 
     @Override
-    public Result<Boolean> modifyUser(User user) {
+    public Result<User> modifyUser(User user) {
         int affectedRpws = userDao.updateUser(user);
-        boolean result = affectedRpws == 0 ? false : true;
-        return ResultUtil.genSuccessResult(result);
+        return ResultUtil.genSuccessResult(user);
     }
 }

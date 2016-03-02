@@ -18,6 +18,6 @@ Configuration:
 #        AppenderRef:
 #          ref: console
     Root:
-      level: info
+      level: debug
       AppenderRef:
         - ref: console

@@ -2,6 +2,7 @@ package com.a.b.c.service;
 
 import com.wengyingjian.kylin.common.model.Result;
 import com.wengyingjian.kylin.common.utils.ResultUtil;
+import com.wengyingjian.kylin.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,9 @@ public class UserService {
     public Result<List<User>> findUser(Integer userId) {
         UserQuery userQuery = new UserQuery();
         userQuery.setId(userId);
-        return userServiceRpc.findUsers(userQuery);
+        Result<List<User>> userListResult = userServiceRpc.findUsers(userQuery);
+        logger.debug("userListResult=[{}]", JsonUtil.getJsonFromObject(userListResult));
+        return userListResult;
     }
 
     /**
@@ -65,16 +68,16 @@ public class UserService {
      */
     public Result<User> modifyUser(Integer uid, String userName, Integer userType) {
         if (uid == null) {
-            logger.error("parameter uid can not be  null while modify user");
+            logger.error("修改用户:用户uid不能为空");
             return ResultUtil.genCommonError("parameter uid can not be  null while modify user");
         }
         if (StringUtils.isEmpty(userName) && userType == null) {
-            logger.info("nothing to update : userUser is empty and user type is null");
-            return ResultUtil.genCommonError("nothing to update");
+            logger.info("没有需要修改的");
+            return ResultUtil.genCommonError("没有需要修改的");
         }
         if (!validateUserType(userType)) {
-            logger.error("user type [{}] not supported", userType);
-            return ResultUtil.genCommonError("user type [{}] not supported", userType);
+            logger.error("userType:[{}] 参数不支持", userType);
+            return ResultUtil.genCommonError("userType:[%s] 参数不支持", userType);
         }
 
         User user = new User();
@@ -83,5 +86,13 @@ public class UserService {
         user.setUserType(userType);
 
         return userServiceRpc.modifyUser(user);
+    }
+
+
+    public Result<User> addUser(String userName, Integer userType) {
+        User user = new User();
+        user.setUserName(userName);
+        user.setUserType(userType);
+        return userServiceRpc.addUser(user);
     }
 }

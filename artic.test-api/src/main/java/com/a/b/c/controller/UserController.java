@@ -1,5 +1,6 @@
 package com.a.b.c.controller;
 
+import com.a.b.c.common.enums.UserType;
 import com.wengyingjian.kylin.common.model.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,6 @@ public class UserController {
     public Result<List<User>> findUser(HttpServletRequest request,//
                                        @RequestParam(value = "uid", required = false) Integer userId) {//
 
-        logger.info("args:");
         return userService.findUser(userId);
     }
 
@@ -60,5 +60,21 @@ public class UserController {
                                    @RequestParam(value = "user_type", required = false) Integer userType) {
 
         return userService.modifyUser(uid, userName, userType);
+    }
+
+    /**
+     * @param request
+     * @param userName
+     * @param userType
+     * @return
+     */
+    @RequestMapping(value = "bean", method = RequestMethod.POST)
+    public Result<User> addUser(HttpServletRequest request,
+                                @RequestParam("user_name") String userName,
+                                @RequestParam(value = "user_type", required = false) Integer userType) {
+        if (userType == null) {
+            userType = UserType.NORMAL.getCode();
+        }
+        return userService.addUser(userName, userType);
     }
 }

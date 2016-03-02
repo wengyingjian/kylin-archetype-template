@@ -1,13 +1,14 @@
 package com.a.b.c.common.enums;
 
 /**
+ * 用户类型
  * Created by wengyingjian on 16/2/1.
  */
 public enum UserType {
 
-    NORMAL(0,"普通用户"),VIP(1,"会员");
+    NORMAL(0, "普通用户"), VIP(1, "会员");
 
-    private UserType(Integer code, String desc) {
+    UserType(Integer code, String desc) {
         this.code = code;
         this.desc = desc;
     }
