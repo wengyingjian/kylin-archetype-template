@@ -22,7 +22,7 @@ public class LoggerAspect {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final String LOG_PREFIX = "参数监控:======================<<\n";
+    private static final String LOG_PREFIX = "\n参数监控:======================<<\n";
     private static final String LOG_SUFFIX = "\n>>============================参数监控";
     /**
      * 日志打印:参数前缀
@@ -69,7 +69,7 @@ public class LoggerAspect {
             paramLog = paramLog(request);
             cookieLog = cookieLog(request);
         }
-        logger.info("{}调用:{{}.{}},request参数:{{},{}}{}", LOG_PREFIX, className, methodName, paramLog, cookieLog, LOG_SUFFIX);
+        logger.info("{}{}#{}-----参数---->{},{}{}", LOG_PREFIX, className, methodName, paramLog, cookieLog, LOG_SUFFIX);
 
     }
 
