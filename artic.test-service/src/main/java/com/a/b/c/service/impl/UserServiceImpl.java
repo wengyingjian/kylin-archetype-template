@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result<List<User>> findUsers(UserQuery userQuery) {
         if (userQuery == null) {
-            return ResultUtil.genCommonError("userQuery bean can not be null");
+            return ResultUtil.genCommonError("查询query对象不能为空");
         }
         List<User> userList = userDao.selectUsers(userQuery);
         logger.debug("userList=[{}]", JsonUtil.getJsonFromObject(userList));
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Result<User> addUser(User user) {
         if (user == null) {
-            return ResultUtil.genCommonError("target user can not be null");
+            return ResultUtil.genCommonError("需要添加的用户对象不能为空");
         }
         int affectedRows = userDao.insertSelective(user);
         return ResultUtil.genSuccessResult(user);
@@ -47,7 +47,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result<User> modifyUser(User user) {
-        int affectedRpws = userDao.updateUser(user);
+        int affectedRows = userDao.updateUser(user);
+        if (affectedRows == 0) {
+            logger.warn("修改用户信息:影响行数为0:user=[{}]", JsonUtil.getJsonFromObject(user));
+        }
         return ResultUtil.genSuccessResult(user);
     }
 }

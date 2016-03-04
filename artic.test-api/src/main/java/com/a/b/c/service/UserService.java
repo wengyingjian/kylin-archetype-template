@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private com.a.b.c.common.service.UserService userServiceRpc;
